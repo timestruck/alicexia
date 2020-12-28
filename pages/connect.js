@@ -1,13 +1,14 @@
 import { cloneElement, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { Footer } from "../components/Footer";
+import Footer from "./components/Footer";
 import styles from "../styles/Connect.module.css";
 
 const PLAYERS = {
   BLACK: "black",
   WHITE: "white",
 };
+
 export default function Connect() {
   const router = useRouter();
 

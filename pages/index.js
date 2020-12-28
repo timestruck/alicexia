@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Footer } from "../components/Footer";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -11,8 +11,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Alice Xia</h1>
-
+        å<h1 className={styles.title}>Alice Xia</h1>
         <p className={styles.description}>
           I enjoy
           <a
@@ -24,7 +23,6 @@ export default function Home() {
           </a>
           , hiking, and finishing the day with a good dessert!
         </p>
-
         <div className={styles.grid}>
           <a href="connect" className={styles.card}>
             <h3>Play Connect 6 &rarr;</h3>
