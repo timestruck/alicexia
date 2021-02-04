@@ -18,7 +18,6 @@ export default function Connect() {
   const [counter, setCounter] = useState(preloadGame.length - 1);
   const [state, setState] = useState(preloadGame); // the board state
 
-  console.log(counter);
   const blackPiece = (position) => {
     if (position < 0 || counter < position) return false;
     return position % 4 === 3 || position % 4 === 0;

@@ -1,16 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background: #D6E2E3;
+    color: #252328;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  color: #BE5C97;
+}
+
+p {
+  font-size: 0.9rem;
+  font-weight: 200;
+  line-height: 1.5;
+  margin: 1rem 0;
 }
 
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Crimson Text', serif;
 }
