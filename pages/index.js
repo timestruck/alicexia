@@ -1,6 +1,5 @@
 import Head from "next/head";
 import styled from 'styled-components';
-import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -14,10 +13,10 @@ export default function Home() {
 
       <Container>
         <Main>
-          <h1 className={styles.title}>Alice</h1>
+          <h1>Alice</h1>
           <p>
             Alice is a frontend engineer based in New York. In her free time,
-            she enjoys &nbsp;
+            she enjoys&nbsp;
           <a
               href="https://instagram.com/madeinhellskitchen/"
               target="_blank"
@@ -58,10 +57,14 @@ const Container = styled.div`
 
 const Main = styled.div`
   position: absolute;
-  padding: 2rem;
+  padding: 3rem 2rem;
   left: 40%;
-  right: 0;
+  right: 0px;
   width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
 
   @media (max-width: 600px) {
     width: 100%;

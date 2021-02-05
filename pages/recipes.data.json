@@ -1,0 +1,94 @@
+[
+  {
+    "name": "Fire chicken",
+    "image": "https://www.maangchi.com/wp-content/uploads/2015/03/buldak-spicychicken-590x332.jpg",
+    "category": [
+      "meat",
+      "main"
+    ],
+    "description": [
+      "Step 1: Mix seasoning together in bowl",
+      "Step 2 : Cut chicken into 1 inch cubes",
+      "Step 3: Combine chicken and seasoning"
+    ],
+    "ingredients": [
+      [
+        "chicken",
+        "1 lb"
+      ],
+      [
+        "hot pepper paste",
+        "1 tbsp"
+      ]
+    ]
+  },
+  {
+    "name": "Cucumber salad",
+    "image": "https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fit,w_1460,h_2188/k%2Farchive%2Ff24b07454124edbec1829383dc1cf2779ecfeb6e",
+    "category": [
+      "meat",
+      "main"
+    ],
+    "description": [
+      "Step 1: Mix seasoning together in bowl",
+      "Step 2 : Cut chicken into 1 inch cubes",
+      "Step 3: Combine chicken and seasoning"
+    ],
+    "ingredients": [
+      [
+        "chicken",
+        "1 lb"
+      ],
+      [
+        "hot pepper paste",
+        "1 tbsp"
+      ]
+    ]
+  },
+  {
+    "name": "Roasted vegetables",
+    "image": "https://www.yellowblissroad.com/wp-content/uploads/2019/10/roasted-vegetables-social.jpg",
+    "category": [
+      "meat",
+      "main"
+    ],
+    "description": [
+      "Step 1: Mix seasoning together in bowl",
+      "Step 2 : Cut chicken into 1 inch cubes",
+      "Step 3: Combine chicken and seasoning"
+    ],
+    "ingredients": [
+      [
+        "chicken",
+        "1 lb"
+      ],
+      [
+        "hot pepper paste",
+        "1 tbsp"
+      ]
+    ]
+  },
+  {
+    "name": "Sea bass",
+    "image": "https://www.marpewellness.com/wp-content/uploads/2015/11/TheBestChileanSeaBass-675x445.jpg",
+    "category": [
+      "meat",
+      "main"
+    ],
+    "description": [
+      "Step 1: Mix seasoning together in bowl",
+      "Step 2 : Cut chicken into 1 inch cubes",
+      "Step 3: Combine chicken and seasoning"
+    ],
+    "ingredients": [
+      [
+        "chicken",
+        "1 lb"
+      ],
+      [
+        "hot pepper paste",
+        "1 tbsp"
+      ]
+    ]
+  }
+]

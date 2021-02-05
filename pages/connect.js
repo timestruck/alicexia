@@ -1,7 +1,6 @@
 import { cloneElement, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Footer from "./components/Footer";
 import styles from "../styles/Connect.module.css";
 
 const PLAYERS = {
@@ -111,8 +110,6 @@ export default function Connect() {
           ))}
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }

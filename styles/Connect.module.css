@@ -41,9 +41,10 @@
 
 .arrows span {
   display: inline-block;
-  padding: 10px;
+  padding: 0.5rem;
   cursor: pointer;
   transition: 0.2s ease;
+  font-size: 3rem;
 }
 
 .arrows span:hover {
@@ -120,5 +121,14 @@
     height: 1.2rem;
     top: calc(50% - 0.6rem);
     left: calc(50% - 0.6rem);
+  }
+
+  .arrows {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .arrows span {
+    font-size: 5rem;
   }
 }
