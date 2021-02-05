@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
-export default function Nav() {
+export default function Nav({ recipe }) {
   return (
     <Navigation>
       <h2>夏</h2>
       <Links>
-        <a href="/recipes">Recipes</a>
+        {recipe && (
+          <a href="/recipes">Recipes</a>
+        )}
+
         <a href="/">Home</a>
       </Links>
     </Navigation>
@@ -24,7 +27,7 @@ const Navigation = styled.nav`
 
   h2 {
     font-size: 3rem;
-    margin: 0;
+    margin: 0px;
   }
 `;
 

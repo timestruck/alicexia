@@ -14,7 +14,7 @@ export default function Recipes() {
         <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet" />
         <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
       </Head>
-      <Nav />
+      <Nav recipe />
       <Container>
         <h2>Recipes</h2>
         <Grid>
@@ -50,11 +50,16 @@ const Page = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: repeat( auto-fit, minmax(12rem, 12rem) );
+  grid-template-columns: repeat( auto-fit, minmax(12rem, 15rem) );
+  justify-content: center;
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const Container = styled.div`
-  max-width: 44rem;
+  max-width: 70rem;
   margin: 0 auto;
   padding: 9rem 2rem 3rem;
   
@@ -73,8 +78,13 @@ const Card = styled.a`
 `;
 
 const RecipeImage = styled.div`
-  width: 10rem;
-  height: 10rem;
+  width: 100%;
   background-size: cover;
   background-position: center;
+
+  &::after {
+    content: ' ';
+    display: block;
+    padding-bottom: 100%;
+  }
 `;

@@ -31,7 +31,7 @@ export default function Home() {
             <Card href="connect">
               <h3>Play Connect 6 &rarr;</h3>
               <p>
-                2 player game where black goes first and places one piece in the
+                A two player game where black goes first and places one piece in the
                 center of the board. After that, players take turns placing 2
                 pieces anywhere on the board. The objective is to get 6 in a row
                 of your color.

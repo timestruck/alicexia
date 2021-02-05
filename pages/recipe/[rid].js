@@ -15,20 +15,31 @@ const Recipe = () => {
       <Head>
         <title>Alice Xia</title>
         <link rel="icon" href="/sunflower_logo.png" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"></link>
         <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet" />
         <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
       </Head>
-      <Nav />
+      <Nav recipe />
       {recipe ? (
         <Container>
-          <h2>{recipe.name}</h2>
+          <Title>
+            <h2>{recipe.name}</h2>
+            {recipe.link && (
+              <a target="_blank" href={recipe.link}>
+                <span className="material-icons">
+                  ios_share
+              </span>
+              </a>
+            )}
+          </Title>
           <h3>Ingredients</h3>
           {recipe.ingredients.map(i => (
-            <p>{i[0]} ({i[1]})</p>
+            <p>{i}</p>
           ))}
           <h3>Instructions</h3>
-          {recipe.description.map(p => (
-            <p>{p}</p>
+          {recipe.description.map((p, i) => (
+            <p><span>Step {i + 1}:</span> {p}</p>
           ))}
         </Container>
       ) : (
@@ -37,7 +48,6 @@ const Recipe = () => {
 
     </Page>
   );
-  <p>Post: {rid}</p>
 }
 
 export default Recipe;
@@ -47,6 +57,10 @@ const Page = styled.div`
   min-height: 100vh;
   min-width: 100vw;
   color: #1421A3;
+
+  a {
+    color: #1421A3;
+  }
 `;
 
 const Container = styled.div`
@@ -64,6 +78,20 @@ const Container = styled.div`
 
   p {
     margin-top: 0;
+  }
+
+  span {
+    font-weight: 500;
+  }
+`;
+
+const Title = styled.div`
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+
+  a {
+    margin-left: 1rem;
   }
 `;
 

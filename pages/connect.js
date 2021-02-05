@@ -1,7 +1,9 @@
 import { cloneElement, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
+
 import styles from "../styles/Connect.module.css";
+import Nav from './components/Nav';
 
 const PLAYERS = {
   BLACK: "black",
@@ -70,6 +72,8 @@ export default function Connect() {
         <title>Connect 6</title>
         <link rel="icon" href="/sunflower_logo.png" />
       </Head>
+
+      <Nav />
 
       <main className={styles.main}>
         <div className={styles.header}>
