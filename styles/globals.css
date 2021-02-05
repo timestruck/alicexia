@@ -40,3 +40,29 @@ h1 {
   font-size: 4rem;
   letter-spacing: 1px;
 }
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav h2 {
+    font-size: 3rem;
+    margin: 0px;
+}
+
+.links {
+  display: flex;
+}
+
+.links a {
+  margin-left: 2rem;
+  color: #1421A3;
+  font-size: 0.9rem;
+}

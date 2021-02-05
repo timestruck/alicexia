@@ -2,16 +2,16 @@ import styled from 'styled-components';
 
 export default function Nav({ recipe }) {
   return (
-    <Navigation>
+    <div className="nav">
       <h2>夏</h2>
-      <Links>
+      <div className="links">
         {recipe && (
           <a href="/recipes">Recipes</a>
         )}
 
         <a href="/">Home</a>
-      </Links>
-    </Navigation>
+      </div>
+    </div>
   );
 }
 
