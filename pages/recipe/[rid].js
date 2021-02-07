@@ -38,7 +38,7 @@ const Recipe = () => {
         <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
       </Head>
       <Nav recipe />
-      {recipe ? (
+      {recipe && (
         <Container>
           <Title>
             <h2>{recipe.gsx$name.$t}</h2>
@@ -60,10 +60,7 @@ const Recipe = () => {
           ))}
 
         </Container>
-      ) : (
-          <NotFound>Page not found</NotFound>
-        )}
-
+      )}
     </Page>
   );
 }
@@ -113,9 +110,5 @@ const Title = styled.div`
   }
 `;
 
-const NotFound = styled.div`
-  text-align: center;
-  padding: 5rem;
-`;
 
 
