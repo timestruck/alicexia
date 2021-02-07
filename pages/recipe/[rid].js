@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import Head from "next/head";
 import styled from 'styled-components';
@@ -7,7 +8,23 @@ import Nav from '../components/Nav';
 const Recipe = () => {
   const router = useRouter()
   const { rid } = router.query;
-  const RECIPES = require('../recipes.data.json');
+
+  const [RECIPES, setRECIPES] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `https://spreadsheets.google.com/feeds/list/1ZcH3Qsrk_7P0t3Kdr1awtpTd90g5-0h8KWGyIKEXlhU/od6/public/values?alt=json`
+      );
+      const data = await response.json();
+
+
+      setRECIPES(data.feed.entry);
+    };
+
+    fetchData();
+  }, []);
+
   const recipe = RECIPES[rid?.split('-')[0]];
 
   return (
@@ -24,9 +41,9 @@ const Recipe = () => {
       {recipe ? (
         <Container>
           <Title>
-            <h2>{recipe.name}</h2>
+            <h2>{recipe.gsx$name.$t}</h2>
             {recipe.link && (
-              <a target="_blank" href={recipe.link}>
+              <a target="_blank" href={recipe.gsx$link.$t}>
                 <span className="material-icons">
                   ios_share
               </span>
@@ -34,13 +51,14 @@ const Recipe = () => {
             )}
           </Title>
           <h3>Ingredients</h3>
-          {recipe.ingredients.map(i => (
-            <p>{i}</p>
+          {recipe.gsx$ingredients.$t.split(',').map((ing, i) => (
+            <p key={i} className="ingredients">{ing}</p>
           ))}
           <h3>Instructions</h3>
-          {recipe.description.map((p, i) => (
-            <p><span>Step {i + 1}:</span> {p}</p>
+          {recipe.gsx$description.$t.split('/n').map((p, i) => (
+            <p key={i}><span>Step {i + 1}:</span> {p}</p>
           ))}
+
         </Container>
       ) : (
           <NotFound>Page not found</NotFound>
@@ -73,7 +91,7 @@ const Container = styled.div`
   }
 
   h3 {
-    margin-bottom: 0;
+    margin: 2rem 0 1rem;
   }
 
   p {
@@ -99,3 +117,5 @@ const NotFound = styled.div`
   text-align: center;
   padding: 5rem;
 `;
+
+

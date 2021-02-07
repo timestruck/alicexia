@@ -49,7 +49,6 @@ export default function Connect() {
   }
 
   function traverse(direction) {
-    console.log("c", counter);
     // traverse backward
     if (direction < 0 && counter >= 1) {
       setCounter(counter - 1);

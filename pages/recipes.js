@@ -1,10 +1,25 @@
+import { useEffect, useState } from 'react';
 import Head from "next/head";
 import styled from 'styled-components';
 
 import Nav from './components/Nav';
 
 export default function Recipes() {
-  const RECIPES = require('./recipes.data.json');
+  const [RECIPES, setRECIPES] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `https://spreadsheets.google.com/feeds/list/1ZcH3Qsrk_7P0t3Kdr1awtpTd90g5-0h8KWGyIKEXlhU/od6/public/values?alt=json`
+      );
+      const data = await response.json();
+
+
+      setRECIPES(data.feed.entry);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <Page>
@@ -19,14 +34,14 @@ export default function Recipes() {
         <h2>Recipes</h2>
         <Grid>
           {RECIPES.map((recipe, i) => {
-            const rid = i + '-' + recipe.name.toLowerCase().split(' ').join('-');
+            const rid = i + '-' + recipe.gsx$name.$t.toLowerCase().split(' ').join('-');
 
             return (
               <Card href={`/recipe/${rid}`}>
-                {recipe.image && (
-                  <RecipeImage style={{ backgroundImage: `url("${recipe.image}")` }} />
+                {recipe.gsx$image.$t && (
+                  <RecipeImage style={{ backgroundImage: `url("${recipe.gsx$image.$t}")` }} />
                 )}
-                <h4>{recipe.name}</h4>
+                <h4>{recipe.gsx$name.$t}</h4>
               </Card>
             )
           })}
