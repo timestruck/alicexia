@@ -30,6 +30,7 @@ h2,
 h3,
 h4 {
   font-family: 'Crimson Text', serif;
+  letter-spacing: 1px;
 }
 
 h1 {
@@ -62,7 +63,6 @@ h1 {
 .links a {
   margin-left: 2rem;
   color: #1421A3;
-  font-size: 0.9rem;
 }
 
 .ingredients {

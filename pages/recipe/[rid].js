@@ -54,10 +54,19 @@ const Recipe = () => {
           {recipe.gsx$ingredients.$t.split(',').map((ing, i) => (
             <p key={i} className="ingredients">{ing}</p>
           ))}
+          {recipe.gsx$image.$t && (
+            <RecipeImageMobile style={{ backgroundImage: `url("${recipe.gsx$image.$t}")` }} />
+          )}
           <h3>Instructions</h3>
           {recipe.gsx$description.$t.split('/n').map((p, i) => (
             <p key={i}><span>Step {i + 1}:</span> {p}</p>
           ))}
+          {recipe.gsx$image.$t && (
+            <Image>
+              <PlateImage style={{ backgroundImage: `url("/plate.png")` }} />
+              <RecipeImage style={{ backgroundImage: `url("${recipe.gsx$image.$t}")` }} />
+            </Image>
+          )}
 
         </Container>
       )}
@@ -79,12 +88,13 @@ const Page = styled.div`
 `;
 
 const Container = styled.div`
-  max-width: 40rem;
+  max-width: 48rem;
   margin: 0 auto;
-  padding: 9rem 2rem 3rem;
+  padding: 9rem 10rem 3rem 0;
   
   h2 {
     text-align: center;
+    font-size: 2rem;
   }
 
   h3 {
@@ -98,6 +108,14 @@ const Container = styled.div`
   span {
     font-weight: 500;
   }
+
+  @media (max-width: 1220px) {
+    max-width: 40rem;
+  }
+
+  @media (max-width: 900px) {
+    padding: 9rem 2rem 3rem;
+  }
 `;
 
 const Title = styled.div`
@@ -110,5 +128,53 @@ const Title = styled.div`
   }
 `;
 
+const Image = styled.div`
+  position: fixed;
+  right: -10rem;
+  top: 25%;
 
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
 
+const PlateImage = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30rem;
+  height: 30rem;
+  z-index: 1;
+  background-size: contain;
+  background-repeat: no-repeat;
+`;
+
+const RecipeImage = styled.div`
+  position: absolute;
+  right: 5.3rem;
+  top: 4.6rem;
+  width: 19rem;
+  height: 19rem;
+  z-index: 2;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.9;
+`;
+
+const RecipeImageMobile = styled.div`
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  max-width: 30rem;
+  
+  &::after {
+    content: ' ';
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  @media (min-width: 900px) {
+    display: none;
+  }
+`;
