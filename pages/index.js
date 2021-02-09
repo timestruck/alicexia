@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export default function Home() {
   return (
-    <div >
+    <div>
       <Head>
         <title>Alice Xia</title>
         <link rel="icon" href="/sunflower_logo.png" />

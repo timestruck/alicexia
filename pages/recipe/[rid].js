@@ -28,7 +28,7 @@ const Recipe = () => {
   const recipe = RECIPES[rid?.split('-')[0]];
 
   return (
-    <Page>
+    <div className="page recipe">
       <Head>
         <title>Alice Xia</title>
         <link rel="icon" href="/sunflower_logo.png" />
@@ -51,7 +51,7 @@ const Recipe = () => {
             )}
           </Title>
           <h3>Ingredients</h3>
-          {recipe.gsx$ingredients.$t.split(',').map((ing, i) => (
+          {recipe.gsx$ingredients.$t.split(';').map((ing, i) => (
             <p key={i} className="ingredients">{ing}</p>
           ))}
           {recipe.gsx$image.$t && (
@@ -70,7 +70,7 @@ const Recipe = () => {
 
         </Container>
       )}
-    </Page>
+    </div>
   );
 }
 
@@ -131,7 +131,7 @@ const Title = styled.div`
 const Image = styled.div`
   position: fixed;
   right: -10rem;
-  top: 25%;
+  top: 35%;
 
   @media (max-width: 900px) {
     display: none;
@@ -142,24 +142,37 @@ const PlateImage = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  width: 30rem;
-  height: 30rem;
+  width: 35rem;
+  height: 35rem;
   z-index: 1;
   background-size: contain;
   background-repeat: no-repeat;
+
+
+  @media (max-width: 1220px) {
+    width: 30rem;
+    height: 30rem;
+  }
 `;
 
 const RecipeImage = styled.div`
   position: absolute;
-  right: 5.3rem;
-  top: 4.6rem;
-  width: 19rem;
-  height: 19rem;
-  z-index: 2;
+  right: 6.5rem;
+  top: 5.5rem;
+  width: 22rem;
+  height: 22rem;
+  z-index: 3;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
   opacity: 0.9;
+
+  @media (max-width: 1220px) {
+    right: 5.3rem;
+    top: 4.6rem;
+    width: 19rem;
+    height: 19rem;
+  }
 `;
 
 const RecipeImageMobile = styled.div`

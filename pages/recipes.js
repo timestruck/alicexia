@@ -22,7 +22,7 @@ export default function Recipes() {
   }, []);
 
   return (
-    <Page>
+    <div className="recipe page">
       <Head>
         <title>Alice Xia</title>
         <link rel="icon" href="/sunflower_logo.png" />
@@ -42,25 +42,21 @@ export default function Recipes() {
                   <RecipeImage style={{ backgroundImage: `url("${recipe.gsx$image.$t}")` }} />
                 )}
                 <h4>{recipe.gsx$name.$t}</h4>
+                <Tags>
+                  {recipe.gsx$category.$t.split(',').map((tag, i) => {
+                    return (
+                      <Tag key={i}>{tag}</Tag>
+                    )
+                  })}
+                </Tags>
               </Card>
             )
           })}
         </Grid>
       </Container>
-    </Page>
+    </div>
   );
 }
-
-const Page = styled.div`
-  background: #FCF4ED;
-  min-height: 100vh;
-  min-width: 100vw;
-  color: #1421A3;
-
-  a {
-    color: #1421A3;
-  }
-`;
 
 const Grid = styled.div`
   display: grid;
@@ -103,4 +99,19 @@ const RecipeImage = styled.div`
     display: block;
     padding-bottom: 100%;
   }
+`;
+
+const Tags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+`;
+
+const Tag = styled.div`
+  border-radius: 0.3rem;
+  background: #1421A3;
+  color: #FCF4ED;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+  padding: 0.1rem 0.5rem 0.2rem;
 `;
