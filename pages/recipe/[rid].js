@@ -42,7 +42,7 @@ const Recipe = () => {
         <Container>
           <Title>
             <h2>{recipe.gsx$name.$t}</h2>
-            {recipe.link && (
+            {recipe.gsx$link.$t && (
               <a target="_blank" href={recipe.gsx$link.$t}>
                 <span className="material-icons">
                   ios_share

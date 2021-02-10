@@ -25,7 +25,7 @@ export default function Home() {
           </a>
           , games, hiking, and finishing the day with a good dessert!
           She wouldn't say cooking is her hobby, but she loves eating good food
-          and so she spends a lot of time looking at recipes and crafting meals.
+          so she spends a lot of time looking at recipes and crafting meals.
         </p>
           <Grid>
             <Card href="recipes">
