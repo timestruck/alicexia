@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import Head from "next/head";
-import styled from 'styled-components';
+import Header from './components/Head';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 import Nav from './components/Nav';
 
 export default function Recipes() {
   const [RECIPES, setRECIPES] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,104 +16,88 @@ export default function Recipes() {
       );
       const data = await response.json();
 
-
       setRECIPES(data.feed.entry);
     };
 
     fetchData();
   }, []);
 
-  return (
-    <div className="recipe page">
-      <Head>
-        <title>Alice Xia</title>
-        <link rel="icon" href="/sunflower_logo.png" />
-        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet" />
-        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-      </Head>
-      <Nav recipe />
-      <Container>
-        <h2>Recipes</h2>
-        <Grid>
-          {RECIPES.map((recipe, i) => {
-            const rid = i + '-' + recipe.gsx$name.$t.toLowerCase().split(' ').join('-');
+  const grid = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+      transform: 'translateX(0px)',
+    },
+    exit: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
-            return (
-              <Card href={`/recipe/${rid}`}>
-                {recipe.gsx$image.$t && (
-                  <RecipeImage style={{ backgroundImage: `url("${recipe.gsx$image.$t}")` }} />
-                )}
-                <h4>{recipe.gsx$name.$t}</h4>
-                <Tags>
-                  {recipe.gsx$category.$t.split(',').map((tag, i) => {
-                    return (
-                      <Tag key={i}>{tag}</Tag>
-                    )
-                  })}
-                </Tags>
-              </Card>
-            )
-          })}
-        </Grid>
-      </Container>
+  const card = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 },
+  };
+
+  return (
+    <div className="recipes page">
+      <Header title="Recipes" />
+      <Nav recipe />
+      <div className="container">
+        <h2>Recipes</h2>
+
+        {RECIPES.length && (
+          <motion.div
+            className="grid"
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            variants={grid}
+            key={router.route}
+          >
+            {RECIPES.map((recipe, i) => {
+              const rid =
+                i +
+                '-' +
+                recipe.gsx$name.$t.toLowerCase().split(' ').join('-');
+
+              return (
+                <motion.a
+                  variants={card}
+                  className="card"
+                  href={`/recipe/${rid}`}
+                  key={rid}
+                >
+                  {recipe.gsx$image.$t && (
+                    <div
+                      className="recipeImage"
+                      style={{
+                        backgroundImage: `url("${recipe.gsx$image.$t}")`,
+                      }}
+                    />
+                  )}
+                  <h4>{recipe.gsx$name.$t}</h4>
+                  <div className="tags">
+                    {recipe.gsx$category.$t
+                      .split(',')
+                      .map((tag, i) => {
+                        return (
+                          <span className="tag" key={i}>
+                            {tag}
+                          </span>
+                        );
+                      })}
+                  </div>
+                </motion.a>
+              );
+            })}
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 }
-
-const Grid = styled.div`
-  display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: repeat( auto-fit, minmax(12rem, 15rem) );
-  justify-content: center;
-
-  @media (max-width: 600px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-`;
-
-const Container = styled.div`
-  max-width: 70rem;
-  margin: 0 auto;
-  padding: 9rem 2rem 3rem;
-  
-  h2 {
-    text-align: center;
-    font-size: 2rem;
-  }
-`;
-
-const Card = styled.a`
-  border: 1px solid #1421A3;
-  padding: 1rem;
-
-  h4 {
-    margin: 1rem 0 0;
-  }
-`;
-
-const RecipeImage = styled.div`
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-
-  &::after {
-    content: ' ';
-    display: block;
-    padding-bottom: 100%;
-  }
-`;
-
-const Tags = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-`;
-
-const Tag = styled.div`
-  border-radius: 0.3rem;
-  background: #1421A3;
-  color: #FCF4ED;
-  font-size: 0.9rem;
-  margin-right: 0.5rem;
-  padding: 0.1rem 0.5rem 0.2rem;
-`;
