@@ -7,6 +7,7 @@ import Nav from './components/Nav';
 
 export default function Recipes() {
   const [RECIPES, setRECIPES] = useState([]);
+  const [filter, setFilter] = useState('');
   const router = useRouter();
 
   useEffect(() => {
@@ -26,9 +27,6 @@ export default function Recipes() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
       transform: 'translateX(0px)',
     },
     exit: {
@@ -50,6 +48,17 @@ export default function Recipes() {
       <div className="container">
         <h2>Recipes</h2>
 
+        {filter !== '' && (
+          <div class="filters">
+            <button
+              className="filterBtn"
+              onClick={() => setFilter('')}
+            >
+              {filter} <span className="material-icons">close</span>
+            </button>
+          </div>
+        )}
+
         {RECIPES.length && (
           <motion.div
             className="grid"
@@ -65,12 +74,21 @@ export default function Recipes() {
                 '-' +
                 recipe.gsx$name.$t.toLowerCase().split(' ').join('-');
 
+              if (
+                filter !== '' &&
+                !recipe.gsx$category.$t.includes(filter)
+              )
+                return;
+
               return (
                 <motion.a
                   variants={card}
                   className="card"
                   href={`/recipe/${rid}`}
                   key={rid}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                  }}
                 >
                   {recipe.gsx$image.$t && (
                     <div
@@ -86,7 +104,14 @@ export default function Recipes() {
                       .split(',')
                       .map((tag, i) => {
                         return (
-                          <span className="tag" key={i}>
+                          <span
+                            className="tag"
+                            key={i}
+                            onClick={(event) => {
+                              setFilter(tag);
+                              event.preventDefault();
+                            }}
+                          >
                             {tag}
                           </span>
                         );
