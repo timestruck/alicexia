@@ -47,18 +47,16 @@ export default function Recipes() {
       <Nav recipe />
       <div className="container">
         <h2>Recipes</h2>
-
-        {filter !== '' && (
-          <div class="filters">
+        <div class="filters">
+          {filter !== '' && (
             <button
               className="filterBtn"
               onClick={() => setFilter('')}
             >
               {filter} <span className="material-icons">close</span>
             </button>
-          </div>
-        )}
-
+          )}
+        </div>
         {RECIPES.length ? (
           <motion.div
             className="grid"

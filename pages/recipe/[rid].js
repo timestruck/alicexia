@@ -33,7 +33,7 @@ const Recipe = () => {
       exit="exit"
       className="page recipe"
     >
-      <Header title="Recipes" />
+      <Header title={`Recipe | ${recipe?.gsx$name?.$t ?? ''}`} />
       <Nav recipe />
       {recipe && (
         <div className="container">

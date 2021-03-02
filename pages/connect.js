@@ -1,19 +1,21 @@
-import { cloneElement, useState } from "react";
-import { useRouter } from "next/router";
-import Head from "next/head";
+import { cloneElement, useState } from 'react';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 
-import styles from "../styles/Connect.module.css";
+import styles from '../styles/Connect.module.css';
 import Nav from './components/Nav';
 
 const PLAYERS = {
-  BLACK: "black",
-  WHITE: "white",
+  BLACK: 'black',
+  WHITE: 'white',
 };
 
 export default function Connect() {
   const router = useRouter();
 
-  const preloadGame = router.query.game?.split(",").map((x) => +x) ?? [180];
+  const preloadGame = router.query.game
+    ?.split(',')
+    .map((x) => +x) ?? [180];
 
   const [player, setPlayer] = useState(PLAYERS.WHITE);
   const [counter, setCounter] = useState(preloadGame.length - 1);
@@ -76,12 +78,13 @@ export default function Connect() {
 
       <main className={styles.main}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Connect 6</h1>
+          <h2 className={styles.title}>Connect 6</h2>
 
           <p className={styles.description}>
-            Rules: black goes first and places one piece in the center of the
-            board. After that, players take turns placing 2 pieces anywhere on
-            the board. The objective is to get 6 in a row of your color.
+            Rules: black goes first and places one piece in the center
+            of the board. After that, players take turns placing 2
+            pieces anywhere on the board. The objective is to get 6 in
+            a row of your color.
           </p>
 
           {/* <div>
@@ -91,7 +94,8 @@ export default function Connect() {
         </div> */}
 
           <div className={styles.description}>
-            <span className={styles.code}>{player}</span> player's turn
+            <span className={styles.code}>{player}</span> player's
+            turn
           </div>
           <div className={styles.arrows}>
             <span onClick={() => traverse(-1)}>&larr;</span>
@@ -100,7 +104,11 @@ export default function Connect() {
         </div>
         <div className={styles.board}>
           {repeat(361, (key) => (
-            <div data-key={key} className={styles.square} onClick={placePiece}>
+            <div
+              data-key={key}
+              className={styles.square}
+              onClick={placePiece}
+            >
               <div className={styles.verticalLine} />
               <div className={styles.horizontalLine} />
               {blackPiece(state.indexOf(key)) && (

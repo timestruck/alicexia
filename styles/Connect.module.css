@@ -14,18 +14,17 @@
 }
 
 .header {
-  padding: 0 0.5rem;
+  padding: 0 1rem;
 }
 
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  text-align: center;
+  font-size: 2rem;
 }
 
 .description {
-  line-height: 1.5;
-  font-size: 1.5rem;
   max-width: 50rem;
   margin: 2rem auto;
 }
