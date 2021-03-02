@@ -59,7 +59,7 @@ export default function Recipes() {
           </div>
         )}
 
-        {RECIPES.length && (
+        {RECIPES.length ? (
           <motion.div
             className="grid"
             initial="hidden"
@@ -121,6 +121,8 @@ export default function Recipes() {
               );
             })}
           </motion.div>
+        ) : (
+          <div />
         )}
       </div>
     </div>

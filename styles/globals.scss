@@ -16,7 +16,7 @@ a {
   color: #1421A3;
 }
 
-p {
+p, span {
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.5;
@@ -40,6 +40,14 @@ h1 {
   line-height: 1.15;
   font-size: 4rem;
   letter-spacing: 1px;
+}
+
+h4 {
+  font-size: 1.3rem;
+
+  @media (max-width: 800px) {
+    font-size: 1.5rem;
+  }
 }
 
 .page {
@@ -71,6 +79,7 @@ h1 {
 .links a {
   margin-left: 2rem;
   color: #1421A3;
+  font-size: 1.2rem;
 }
 
 .ingredients {

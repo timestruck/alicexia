@@ -24,7 +24,7 @@ export default function Home() {
               >
                 cross stitch
               </a>
-              , games, hiking, and finishing the day with a good
+              , board games, hiking, and finishing the day with a good
               dessert! She wouldn't say cooking is her hobby, but she
               loves eating good food so she spends a lot of time
               looking at recipes and crafting meals.

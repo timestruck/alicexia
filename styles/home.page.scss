@@ -10,6 +10,10 @@
   
   .container {
     height: 100vh;
+
+    @media (max-width: 800px) {
+      height: unset;
+    }
   }
 
   .main {
@@ -22,6 +26,7 @@
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
+    background: #D6E2E3;
 
     @media (max-width: 600px) {
       width: 100%;
